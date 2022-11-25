@@ -36,7 +36,6 @@ public class CubeTransforms : MonoBehaviour
             {
                 doub = 0;
             }
-
             GameObject Cubo = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Cubos.Add(Cubo.GetComponent<MeshFilter>());
             mOriginales.Add(Transforms.Translate(positions[i].x, positions[i].y, positions[i].z));
@@ -46,9 +45,10 @@ public class CubeTransforms : MonoBehaviour
     }
     void Update()
     {
-        if (rotZ < 360.0f * 2f)
+        if (rotZ < 360.0f)
         {
-            rotZ += 0.1f;
+            Debug.Log(rotZ);
+            rotZ += 0.5f;
             for (int i = 4; i < 8; i++)
             {
                 matrices[i] = Transforms.RotateZ(rotZ) * mOriginales[i];
@@ -56,7 +56,8 @@ public class CubeTransforms : MonoBehaviour
         }
         else if (rotY < 360.0f)
         {
-            rotY += 0.1f;
+            Debug.Log(rotY);
+            rotY += 0.5f;
             matrices[2] = Transforms.RotateY(rotY) * mOriginales[2];
             matrices[3] = Transforms.RotateY(rotY) * mOriginales[3];
             matrices[6] = Transforms.RotateY(rotY) * mOriginales[6];
